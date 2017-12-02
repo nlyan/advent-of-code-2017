@@ -6,17 +6,14 @@ type
   Row = seq[int]
   Spreadsheet = seq[Row]
 
-
 proc readSpreadsheetFile (path: string): Spreadsheet =
   var fs = newFileStream(path, fmRead)
   var spreadsheet: Spreadsheet = @[]
   var line = ""
-
   while fs.readLine(line):
     var row: Row = line.splitWhitespace().map(parseInt)
     if row.len != 0:
       spreadsheet.add(row)
-
   return spreadsheet
 
 
