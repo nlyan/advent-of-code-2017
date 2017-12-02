@@ -1,6 +1,8 @@
 import streams
 import strutils
 import sequtils
+import algorithm
+import math
 
 type
   Row = seq[int]
@@ -16,7 +18,6 @@ proc readSpreadsheetFile (path: string): Spreadsheet =
       spreadsheet.add(row)
   return spreadsheet
 
-
 proc calculateChecksum (spreadsheet: Spreadsheet): int =
   result = 0
   for row in spreadsheet:
@@ -25,7 +26,22 @@ proc calculateChecksum (spreadsheet: Spreadsheet): int =
     result += maxi - mini
   return result
 
-var spreadsheet = readSpreadsheetFile("input.txt")
-var checksum = calculateChecksum(spreadsheet)
+# TODO: remove the need to mutate the rows by replacing above folds with a presort
 
-echo checksum
+iterator divisiblePairs (row: var Row): tuple[num: int, denom: int] =
+  for i, upper in row.pairs:
+    for j in i+1..<row.len:
+      if (fmod(float64(upper), float64(row[j])) == 0):
+        yield (upper, row[j])
+
+proc calculateDivisiblePairChecksum (spreadsheet: var Spreadsheet): int =
+  result = 0
+  for row in spreadsheet.mitems:
+    row.sort(system.cmp, Descending)
+    for num, denom in divisiblePairs(row):
+      result += int(num / denom)
+  return result
+
+var spreadsheet = readSpreadsheetFile("input.txt")
+echo calculateChecksum(spreadsheet)
+echo calculateDivisiblePairChecksum(spreadsheet)
