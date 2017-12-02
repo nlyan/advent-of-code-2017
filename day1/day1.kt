@@ -25,4 +25,19 @@ fun main (args: Array<String>) {
     }
 
     println (count)
+
+    count = 0
+    var n = digits.count()
+    var lh = digits.subSequence(0, n/2)
+    var uh = digits.subSequence(n/2, n)
+
+    var upperit = uh.iterator()
+    for (lower in lh) {
+        var upper = upperit.next()
+        if (lower == upper) {
+            count += 2 * lower.toString().toInt()
+        }
+    }
+
+    println (count)
 }
