@@ -34,7 +34,28 @@ function part1() {
     }
     print (count.toString());
 }
-part1()
+
+function part2() {
+    var reader = new LineReader();
+    var count = 0;
+    while (reader.next()) {
+        var words = reader.line().split (/\s+/);
+        count += 1
+        for (var i = 0, a = words.length; i < a; i++) {
+            words[i] = words[i].split('').sort().join('')
+        }
+        for (var i = 0, a = words.length; i < a; i++) {
+            if (words.lastIndexOf(words[i]) != i) {
+                count -= 1
+                break;
+            }
+        }
+    }
+    print (count.toString());
+}
+
+// part1()
+part2()
 )JS";
 
 int main() {
