@@ -22,7 +22,7 @@ struct LineReader {
 };
 
 char const* const program = R"JS(
-Array.prototype.unique = function (arr) {
+Array.prototype.unique = function () {
     var target = [];
     for (var i = 0, a = this.length; i < a; i++) {
         var obj = this[i];
