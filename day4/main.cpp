@@ -29,8 +29,7 @@ function main() {
     var reader = new LineReader();
     var count = 0;
     while (reader.next()) {
-        var line = reader.line ();
-        var words = line.split (/\s+/);
+        var words = reader.line().split (/\s+/);
         var uwords = words.unique();
         count += (words.length === uwords.length);
     }
