@@ -2,14 +2,6 @@
 #include <iostream>
 #include <string>
 
-static std::string
-readline () {
-    std::string ret;
-    std::cout << ">>> ";
-    std::getline (std::cin, ret);
-    return ret;
-}
-
 static void
 print (std::string const& str) {
     std::cout << str << "\n";
