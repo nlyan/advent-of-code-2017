@@ -25,17 +25,16 @@ Array.prototype.unique = function () {
     return target;
 }
 
-function main() {
+function part1() {
     var reader = new LineReader();
     var count = 0;
     while (reader.next()) {
         var words = reader.line().split (/\s+/);
-        var uwords = words.unique();
-        count += (words.length === uwords.length);
+        count += (words.length === words.unique().length);
     }
     print (count.toString());
 }
-main()
+part1()
 )JS";
 
 int main() {
