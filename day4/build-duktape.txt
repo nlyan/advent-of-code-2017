@@ -1,0 +1,5 @@
+# Duktape v2.2.0
+
+python2 duktape/tools/configure.py --omit-deprecated-config-options --dll --output-directory src-duktape --define DUK_USE_CPP_EXCEPTIONS --define DUK_USE_JSON_STRINGIFY_FASTPATH --undefine DUK_USE_FILE_IO --undefine DUK_USE_VOLUNTARY_GC
+
+g++ -std=c++14 -fno-rtti -O2 -flto -shared -DNDEBUG -fPIC -shared duktape.cpp -Wl,--as-needed -o libduktape.so

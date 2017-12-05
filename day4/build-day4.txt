@@ -1,0 +1,4 @@
+g++ -std=c++14 -O2 -flto -I. -Idukglue/include main.cpp -L. -lduktape
+
+cat input.txt | LD_LIBRARY_PATH=. ./a.out
+
