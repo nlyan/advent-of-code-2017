@@ -13,7 +13,7 @@ function read_maze()
     return maze
 end
 
-function escape_from_maze(maze)
+function escape_from_maze_p1(maze)
     local steps = 0
     local i = 1
     local last
@@ -28,4 +28,23 @@ function escape_from_maze(maze)
     return steps
 end
 
-print (escape_from_maze (read_maze()))
+function escape_from_maze_p2(maze)
+    local steps = 0
+    local i = 1
+    local last
+    while true do
+        if i > #maze then break end
+        if i < 1 then break end
+        last = i
+        i = maze[i]
+        if i - last >= 3 then
+            maze[last] = maze[last] - 1
+        else
+            maze[last] = maze[last] + 1
+        end
+        steps = steps + 1
+    end
+    return steps
+end
+
+print (escape_from_maze_p2 (read_maze()))
