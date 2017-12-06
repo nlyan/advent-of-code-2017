@@ -7,3 +7,5 @@ http://adventofcode.com/
 2. Nim
 3. FORTRAN 95
 4. JavaScript using C++, [Duktape](http://duktape.org/) and [Dukglue](https://github.com/Aloshi/dukglue)
+5. Lua
+
